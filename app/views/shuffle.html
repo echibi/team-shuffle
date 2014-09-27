@@ -1,16 +1,25 @@
-    <form ng-submit="addPost()"
-        style="margin-top:30px;">
-        <h3>Add a new post</h3>
+<form ng-submit="addTeam()">
+    <h3>Add Team</h3>
+    <div class="form-group">
+        <input type="text"
+        class="form-control"
+        placeholder="Teamname"
+        ng-model="title"></input>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Team</button>
+</form>
+<div class="teams" ng-repeat="team in teams" ng-form="teamForm">
+    <h3>{{ team.title }}</h3>
+    <div ng-repeat="member in team.members">
+        {{ member.name }}
+    </div>
+    <form ng-submit="addMember(team)">
         <div class="form-group">
             <input type="text"
             class="form-control"
-            placeholder="Title"
-            ng-model="title"></input>
+            placeholder="Name"
+            ng-model="team.members.new.name"></input>
         </div>
-        <button type="submit" class="btn btn-primary">Post</button>
+        <button type="submit" class="btn btn-primary">Add member</button>
     </form>
-<div class="teams" ng-repeat="team in teams">
-{{ team.teamname }}
-<div ng-repeat="member in team.members">
-{{ member.name }}
 </div>

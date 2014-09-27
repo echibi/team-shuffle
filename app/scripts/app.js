@@ -7,7 +7,7 @@
  *
  * Main module of the application.
  */
-angular.module('teamShuffleApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch']).config(function($routeProvider) {
+angular.module('teamShuffleApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch', 'LocalStorageModule']).config(function($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
@@ -17,12 +17,16 @@ angular.module('teamShuffleApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRou
     }).otherwise({
         redirectTo: '/'
     });
-}).factory('teams', [
+}).config(['localStorageServiceProvider',
+    function(localStorageServiceProvider) {
+        localStorageServiceProvider.setPrefix('ls');
+    }
+]).factory('teams', [
 
     function() {
         var o = {
             teams: [{
-                teamname: 'team 1',
+                title: 'team 1',
                 members: [{
                     name: 'Jonas'
                 }, {
@@ -30,8 +34,8 @@ angular.module('teamShuffleApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRou
                 }, {
                     name: 'Jonas'
                 }, ]
-            },{
-                teamname: 'team 2',
+            }, {
+                title: 'team 2',
                 members: [{
                     name: 'Elina'
                 }, {
