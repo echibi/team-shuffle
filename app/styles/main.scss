@@ -16,7 +16,7 @@ body {
   padding-bottom: 20px;
 }
 .container {
-    text-align: center;
+    text-align: left;
 }
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
@@ -41,6 +41,11 @@ body {
 .teams {
   text-align: left;
 }
+
+.all-members {
+  text-align: left;
+}
+
 
 /* Custom page footer */
 .footer {

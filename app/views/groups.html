@@ -1,0 +1,16 @@
+<form ng-submit="addGroup()">
+    <h3>Add Group</h3>
+    <div class="form-group">
+        <input type="text"
+        class="form-control"
+        placeholder="Groupname"
+        ng-model="title"></input>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Group</button>
+</form>
+<div class="teams" ng-repeat="group in groups" ng-form="teamForm">
+    <h3><a href="#/groups/{{$index}}">{{ group.title }}</a></h3>
+    <div ng-repeat="member in group.members">
+        {{ member.name }}
+    </div>    
+</div>

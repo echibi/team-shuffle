@@ -1,7 +1,10 @@
 {
   "name": "teamshuffle",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "knuth-shuffle": "^1.0.1",
+    "underscore": "^1.7.0"
+  },
   "devDependencies": {
     "grunt": "^0.4.1",
     "grunt-autoprefixer": "^0.7.3",

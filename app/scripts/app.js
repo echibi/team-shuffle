@@ -11,40 +11,18 @@ angular.module('teamShuffleApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRou
     $routeProvider.when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-    }).when('/shuffle', {
-        templateUrl: 'views/shuffle.html',
-        controller: 'ShuffleCtrl'
-    }).otherwise({
+    }).when('/groups', {
+        templateUrl: 'views/groups.html',
+        controller: 'GroupsCtrl'
+    }).when('/groups/:groupId', {
+        templateUrl: 'views/group-shuffle.html',
+        controller: 'ShuffleGroupCtrl'
+      })
+    .otherwise({
         redirectTo: '/'
     });
 }).config(['localStorageServiceProvider',
     function(localStorageServiceProvider) {
         localStorageServiceProvider.setPrefix('ls');
-    }
-]).factory('teams', [
-
-    function() {
-        var o = {
-            teams: [{
-                title: 'team 1',
-                members: [{
-                    name: 'Jonas'
-                }, {
-                    name: 'Jonas'
-                }, {
-                    name: 'Jonas'
-                }, ]
-            }, {
-                title: 'team 2',
-                members: [{
-                    name: 'Elina'
-                }, {
-                    name: 'Elina'
-                }, {
-                    name: 'Elina'
-                }, ]
-            }]
-        };
-        return o;
     }
 ]);

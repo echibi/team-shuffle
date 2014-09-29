@@ -1,0 +1,30 @@
+<h1>{{ currentGroup.title }}</h1>
+shuffle this.
+<div class="teams">
+    <ul ng-repeat="member in currentGroup.members" class="all-members">
+        <li>{{ member.name }}</li>
+    </ul>
+    <form ng-submit="addGroupMember(currentGroup)">
+        <div class="form-group">
+            <input type="text"
+            class="form-control"
+            placeholder="Name"
+            ng-model="currentGroup.members.name"></input>
+        </div>
+        <button type="submit" class="btn btn-primary">Add member</button>
+    </form>
+    <form novalidate ng-submit="shuffleTeams(shuffleConfig)">
+        <div class="form-group">
+        <input type="text"            
+            <input type="number"
+            class="form-control"
+            placeholder="3"
+            ng-model="shuffleConfig.numberTeams">
+        </div>
+        <button type="submit" class="btn btn-success">Shuffle!</button>
+    </form>
+    <!-- <button type="button" class="btn btn-success" ng-click="shuffleTeams(currentGroup)">Shuffle!</button> -->
+    <ul ng-repeat="member in shuffledTeams" class="all-members">
+        <li>{{ member.name }}</li>
+    </ul>
+</div>
