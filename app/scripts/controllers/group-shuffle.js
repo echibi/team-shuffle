@@ -25,8 +25,9 @@ angular.module('teamShuffleApp').controller('ShuffleGroupCtrl', function($scope,
         });
         group.members.name = '';
     };
-    $scope.removeGroupMember = function() {
-        //TODO:: remove function.
+    $scope.removeGroupMember = function(index) {
+        // Remove function.
+        $scope.currentGroup.members.splice(index, 1);
     };
     $scope.shuffleTeams = function(config) {
         var members = $scope.currentGroup.members || [];
@@ -35,29 +36,23 @@ angular.module('teamShuffleApp').controller('ShuffleGroupCtrl', function($scope,
                 numberTeams: 3
             };
         }
-        // console.log(config);
         // Create temporary shuffled array. 
         var shuffledMembers = shuffle(members.slice(0));
-        $scope.shuffledTeams = [];
-        var memberLength = shuffledMembers.length,
-            i = 0,
-            teamIndex = 0;
-        $scope.shuffledTeams = shuffledMembers;
-        while (i < memberLength) {
-            //$scope.shuffledTeams.push(shuffledMembers.splice(0, 3));
-            if (0 === i % 3) {
-                teamIndex++;
-                // console.log(shuffledMembers[i]);
-            }
-            // $scope.shuffledTeams = $scope.shuffledTeams[teamIndex] || [teamIndex];
-            // $scope.shuffledTeams[teamIndex] = {
-                // members: shuffledMembers[i]
-            // };
-            i += 1;
-        }
-        // console.log(shuffledMembers);
-        // console.log($scope.shuffledTeams);
+        
+        $scope.shuffledTeams = split(shuffledMembers, config.numberTeams);
+
     };
+
+    function split(a, n) {
+        var len = a.length,
+            out = [],
+            i = 0;
+        while (i < len) {
+            var size = Math.ceil((len - i) / n--);
+            out.push(a.slice(i, i += size));
+        }
+        return out;
+    }
 
     function shuffle(array) {
         var currentIndex = array.length,

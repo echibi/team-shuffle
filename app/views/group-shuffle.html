@@ -1,8 +1,12 @@
 <h1>{{ currentGroup.title }}</h1>
-shuffle this.
 <div class="teams">
     <ul ng-repeat="member in currentGroup.members" class="all-members">
-        <li>{{ member.name }}</li>
+        <li>
+            {{ member.name }}
+            <span class="input-group-btn">
+                <button class="btn btn-danger" ng-click="removeGroupMember($index)" aria-label="Remove">X</button>
+            </span> 
+        </li>
     </ul>
     <form ng-submit="addGroupMember(currentGroup)">
         <div class="form-group">
@@ -24,7 +28,10 @@ shuffle this.
         <button type="submit" class="btn btn-success">Shuffle!</button>
     </form>
     <!-- <button type="button" class="btn btn-success" ng-click="shuffleTeams(currentGroup)">Shuffle!</button> -->
-    <ul ng-repeat="member in shuffledTeams" class="all-members">
-        <li>{{ member.name }}</li>
+    <ul ng-repeat="team in shuffledTeams" class="all-members">
+        <li>Team {{ $index + 1 }}</li>
+        <ul ng-repeat="member in team">
+            <li>{{ member.name }}</li>
+        </ul>
     </ul>
 </div>

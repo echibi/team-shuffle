@@ -12,9 +12,8 @@ angular.module('teamShuffleApp').controller('GroupsCtrl', function($scope, local
     $scope.$watch('groups', function() {
         localStorageService.add('groups', $scope.groups);
     }, true);
-    // $scope.teams = teams.teams;
     $scope.addGroup = function() {
-        if ($scope.title === '') {
+        if ($scope.title === '' || $scope.title === undefined) {
             return;
         }
         $scope.groups.push({
@@ -23,9 +22,8 @@ angular.module('teamShuffleApp').controller('GroupsCtrl', function($scope, local
         });
         $scope.title = '';
     };
-    $scope.removeGroup = function() {
-        //TODO:: remove function.
+    $scope.removeGroup = function(index) {
+        // Remove function.
+        $scope.groups.splice(index, 1);
     };
-
-    
 });

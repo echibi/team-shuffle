@@ -9,8 +9,13 @@
     <button type="submit" class="btn btn-primary">Add Group</button>
 </form>
 <div class="teams" ng-repeat="group in groups" ng-form="teamForm">
-    <h3><a href="#/groups/{{$index}}">{{ group.title }}</a></h3>
+    <h3>
+        <a href="#/groups/{{$index}}">{{ group.title }}</a>
+        <span class="input-group-btn">
+            <button class="btn btn-danger" ng-click="removeGroup($index)" aria-label="Remove">X</button>
+        </span>
+    </h3>
     <div ng-repeat="member in group.members">
         {{ member.name }}
-    </div>    
+    </div>
 </div>
