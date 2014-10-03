@@ -1,21 +1,27 @@
-<form ng-submit="addGroup()">
-    <h3>Add Group</h3>
-    <div class="form-group">
-        <input type="text"
-        class="form-control"
-        placeholder="Groupname"
-        ng-model="title"></input>
-    </div>
-    <button type="submit" class="btn btn-primary">Add Group</button>
-</form>
-<div class="teams" ng-repeat="group in groups" ng-form="teamForm">
-    <h3>
-        <a href="#/groups/{{$index}}">{{ group.title }}</a>
+<form ng-submit="addGroup()" id="add-form">
+    <h2>Add Group</h2>   
+    <div class="input-group form-search">
+        <input type="text" class="form-control search-query" placeholder="Groupname" ng-model="title">
         <span class="input-group-btn">
-            <button class="btn btn-danger" ng-click="removeGroup($index)" aria-label="Remove">X</button>
+        <button type="submit" class="btn btn-primary" data-type="last">Add Group</button>
         </span>
-    </h3>
-    <div ng-repeat="member in group.members">
-        {{ member.name }}
+    </div>
+</form>
+<div class="groups-wrap row">
+    <div ng-repeat="group in groups">
+        <div class="col-xs-6">
+            <div class="inner-wrap">
+                <h3 class="group-title">
+                <button class="btn btn-xs btn-danger" ng-click="removeGroup($index)" aria-label="Remove">X</button>
+                <a href="#/groups/{{$index}}">{{ group.title }}</a>
+                </h3>
+                <ul>
+                    <li ng-repeat="member in group.members">
+                        {{ member.name }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix" ng-if="$index % 1 === 0 && $index > 0"></div>
     </div>
 </div>

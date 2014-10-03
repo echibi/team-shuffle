@@ -2,6 +2,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
+@import "../../bower_components/Bootflat/bootflat/scss/bootflat.scss";
+@import "_variables";
 
 .browsehappy {
   margin: 0.2em 0;
@@ -12,8 +14,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 /* Space out content a bit */
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  //padding-top: 20px;
+  //padding-bottom: 20px;
 }
 .container {
     text-align: left;
@@ -27,9 +29,17 @@ body {
 }
 
 .header {
+  .logo {
+    //text-transform: uppercase;
+    font-weight: 300;
+  }
 }
 
 .jumbotron {
+  &.frontpage {
+      padding:4em 0;
+
+  }
   text-align: center;
 }
 
@@ -45,10 +55,52 @@ body {
 .all-members {
   text-align: left;
 }
+#add-form {
+  margin:0 0 2em;
+  input, .btn {
+    border-radius: 0;
+  }
+}
+.groups-wrap {
+  .inner-wrap {
+    padding:1em;
+    margin-bottom: 1em;
+    background:$light-gray;
+  }
+  .group-title {
+    position: relative;
+    margin-top:0;
+    .btn {
+      position: absolute;
+      right:0;
+    }
+  }
+}
 
+.all-members {
+  margin:2em 0;
+  padding:0;
+  list-style: none;
+  li {
+    padding-top:6px;
+    padding-bottom:6px;
+    .btn {
+      margin-right:.5em;
+    }
+  }
+}
+.shuffled-teams {
+  margin:2em 0;
+  padding:0;
+  list-style: none;
+  li > div {
+    margin:0 0 1em;
+  }
+}
 
 /* Custom page footer */
 .footer {
+  background: none;
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
@@ -67,6 +119,6 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 630px;
   }
 }

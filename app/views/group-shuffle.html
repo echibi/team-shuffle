@@ -1,25 +1,22 @@
 <h1>{{ currentGroup.title }}</h1>
 <div class="teams">
-    <ul ng-repeat="member in currentGroup.members" class="all-members">
-        <li>
-            {{ member.name }}
+    <form ng-submit="addGroupMember(currentGroup)" id="add-form">
+        <div class="input-group form-search">
+            <input type="text" class="form-control search-query" placeholder="Name" ng-model="currentGroup.members.name">
             <span class="input-group-btn">
-                <button class="btn btn-danger" ng-click="removeGroupMember($index)" aria-label="Remove">X</button>
-            </span> 
+            <button type="submit" class="btn btn-primary" data-type="last">Add member</button>
+            </span>
+        </div>
+    </form>
+    <ul class="all-members row">
+        <li class="col-xs-6" ng-repeat="member in currentGroup.members">
+            <button class="btn btn-danger btn-xs" ng-click="removeGroupMember($index)" aria-label="Remove">X</button>
+            <span>{{ member.name }}</span>
         </li>
     </ul>
-    <form ng-submit="addGroupMember(currentGroup)">
-        <div class="form-group">
-            <input type="text"
-            class="form-control"
-            placeholder="Name"
-            ng-model="currentGroup.members.name"></input>
-        </div>
-        <button type="submit" class="btn btn-primary">Add member</button>
-    </form>
     <form novalidate ng-submit="shuffleTeams(shuffleConfig)">
         <div class="form-group">
-        <input type="text"            
+            <input type="text"
             <input type="number"
             class="form-control"
             placeholder="3"
@@ -28,10 +25,16 @@
         <button type="submit" class="btn btn-success">Shuffle!</button>
     </form>
     <!-- <button type="button" class="btn btn-success" ng-click="shuffleTeams(currentGroup)">Shuffle!</button> -->
-    <ul ng-repeat="team in shuffledTeams" class="all-members">
-        <li>Team {{ $index + 1 }}</li>
-        <ul ng-repeat="member in team">
-            <li>{{ member.name }}</li>
-        </ul>
+    <ul class="shuffled-teams row">
+        <li ng-repeat="team in shuffledTeams">
+            <div class="col-xs-6">
+                Team {{ $index + 1 }}
+                <ul ng-repeat="member in team">
+                    <li>{{ member.name }}</li>
+                </ul>
+            </div>
+            <div class="clearfix" ng-if="$index % 1 === 0 && $index > 0"></div>
+        </li>
+        
     </ul>
 </div>
