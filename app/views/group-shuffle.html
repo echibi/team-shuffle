@@ -16,25 +16,28 @@
     </ul>
     <form novalidate ng-submit="shuffleTeams(shuffleConfig)">
         <div class="form-group">
-            <input type="text"
+            <label for="numberTeams">How many teams should we generate?</label>
             <input type="number"
             class="form-control"
             placeholder="3"
+            name="numberTeams"
+            id="numberTeams"
             ng-model="shuffleConfig.numberTeams">
         </div>
         <button type="submit" class="btn btn-success">Shuffle!</button>
     </form>
     <!-- <button type="button" class="btn btn-success" ng-click="shuffleTeams(currentGroup)">Shuffle!</button> -->
-    <ul class="shuffled-teams row">
-        <li ng-repeat="team in shuffledTeams">
+    <div class="shuffled-teams row">
+        <div ng-repeat="team in shuffledTeams">
             <div class="col-xs-6">
-                Team {{ $index + 1 }}
-                <ul ng-repeat="member in team">
-                    <li>{{ member.name }}</li>
-                </ul>
+                <div class="inner-wrap">
+                    <h3>Team {{ $index + 1 }}</h3>
+                    <ul>
+                        <li ng-repeat="member in team">{{ member.name }}</li>
+                    </ul>
+                </div>
             </div>
             <div class="clearfix" ng-if="$index % 1 === 0 && $index > 0"></div>
-        </li>
-        
-    </ul>
+        </div>
+    </div>
 </div>
