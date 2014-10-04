@@ -37,7 +37,8 @@ body {
 
 .jumbotron {
   &.frontpage {
-      padding:4em 0;
+    margin: 5em 0 0;
+    padding:4em 0;
 
   }
   text-align: center;
@@ -47,6 +48,14 @@ body {
 /**
 * App-started CSS
 */
+
+.breadcrumbs {
+  margin:1em 0;
+  & > a {
+    font-size:0.875em;
+    text-transform: uppercase;
+  }
+}
 
 .teams {
   text-align: left;

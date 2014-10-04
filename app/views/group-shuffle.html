@@ -1,3 +1,6 @@
+<nav class="breadcrumbs" role="navigation">
+    <a href="#/groups" class="back"><i class="glyphicon glyphicon-arrow-left"></i> Groups</a>
+</nav>
 <h1>{{ currentGroup.title }}</h1>
 <div class="teams">
     <form ng-submit="addGroupMember(currentGroup)" id="add-form">
@@ -37,7 +40,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="clearfix" ng-if="$index % 1 === 0 && $index > 0"></div>
+            <div class="clearfix" ng-if="($index + 1) % 2 === 0 && $index > 0"></div>
         </div>
     </div>
 </div>

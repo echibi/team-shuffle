@@ -1,3 +1,6 @@
+<nav class="breadcrumbs" role="navigation">
+    <a href="/" class="back"><i class="glyphicon glyphicon-arrow-left"></i> Start</a>
+</nav>
 <form ng-submit="addGroup()" id="add-form">
     <h2>Add Group</h2>   
     <div class="input-group form-search">
@@ -22,6 +25,6 @@
                 </ul>
             </div>
         </div>
-        <div class="clearfix" ng-if="$index % 1 === 0 && $index > 0"></div>
+        <div class="clearfix" ng-if="($index + 1) % 2 === 0 && $index > 0"></div>
     </div>
 </div>
